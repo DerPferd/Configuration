@@ -102,10 +102,13 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-#PS1="$HC$FYEL[ $FBLE${debian_chroot:+($debian_chroot)}\u$FYEL: $FBLE\w $FYEL]\\$ $RS"
-#PS2="$HC$FYEL&gt; $RS"
+# custom prompt displays user and directory
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;33m\][\[\033[00m\] \[\033[31m\]\u\[\033[00m\]: \[\033[01;34m\]\w\[\033[00m\] \[\033[01;33m\]]\$\[\033[00m\] '
 
+# this makes the bash prompt always start at the bottom of the screen
 TOLASTLINE=$(tput cup "$LINES")
 PS1="\[$TOLASTLINE\]$PS1"
 
+# some personal aliases
+alias py='python'
+alias py3='python3'
